@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace WebApp.Controllers.Web
 {
     public class HomeController : Controller
     {
-
+        [Authorize]
         public IActionResult Index()
         {
             return View();

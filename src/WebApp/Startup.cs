@@ -43,7 +43,7 @@ namespace WebApp
                 config.User.RequireUniqueEmail = true;
                 config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";                 //TODO Change to sth like "/Auth/Login"
                 //TODO API authentification
-                /*config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()                    //API authentification
+                /*config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()                    //TODO API authentification
                 {
                     OnRedirectToLogin = async ctx =>
                     {

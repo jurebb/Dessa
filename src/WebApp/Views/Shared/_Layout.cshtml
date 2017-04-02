@@ -29,8 +29,8 @@
                         <!--toggle is-active on nav-menu in js-->
                         <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
                         <a class="nav-item is-tab is-hidden-tablet">My profile</a>
-                        <i class="nav-item"><i class="fa fa-user-circle"></i>&nbspHello, babanjure</i>
-                        <a class="nav-item is-tab">Logout</a>
+                        <i class="nav-item"><i class="fa fa-user-circle"></i>&nbspHello, @User.Identity.Name</i>
+                        <a class="nav-item is-tab" asp-controller="Auth" asp-action="Logout">Logout</a>
                     </div>
                 </div>
             </nav>

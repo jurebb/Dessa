@@ -1,5 +1,7 @@
-﻿@{
+﻿@model WebApp.ViewModels.LoginViewModel
+@{
     Layout = "AuthLayout";
+    ViewBag.Title = "Login";
 }
 
 
@@ -10,23 +12,27 @@
     Please login or register if you are a new user
 </h2>
 <div class="box login">
-    <p class="control has-icon">
-        <input class="input" type="text" placeholder="Username">
-        <i class="fa fa-user"></i>
-    </p>
-    <p class="control has-icon">
-        <input class="input" type="password" placeholder="Password">
-        <i class="fa fa-lock"></i>
-    </p>
-
-    <p class="control">
-        <button class="button is-warning is-medium">
+    <form method="post" novalidate>
+        <p class="control has-icon">
+            <input asp-for="Username" class="input" type="text" placeholder="Username">
             <i class="fa fa-user"></i>
-            &nbspLogin
-        </button>
-        <button class="button is-link is-medium">
-            Register
-        </button>
-    </p>
+        </p>
+        <p class="control has-icon">
+            <input class="input" type="password" asp-for="Password" placeholder="Password">
+            <i class="fa fa-lock"></i>
+        </p>
+
+        <p class="control">
+            <input type="submit" class="button is-warning is-medium" value="Login"/>
+            <!--<button class="button is-warning is-medium" type="submit">
+                <i class="fa fa-user"></i>
+                &nbspLogin
+            </button>-->
+            <!--<button class="button is-link is-medium" asp-action="Register" asp-controller="Auth">
+                Register
+            </button>-->
+            <a class="button is-link is-medium" asp-action="Register" asp-controller="Auth">Register</a>
+        </p>
+        </form>
 </div>
                     
