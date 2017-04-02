@@ -17,5 +17,6 @@ namespace WebApp.Models
         public string SecondText { get; set; }
         public int FirstSumVotes { get; set; }
         public int SecondSumVotes { get; set; }
+        public string Text { get; set; }
     }
 }
