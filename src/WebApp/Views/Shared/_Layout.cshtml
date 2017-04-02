@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bulma/css/bulma.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    <section class="hero is-fullheight is-default is-bold is-dark">
+        <div class="hero-head">
+            <nav class="nav has-shadow">
+                <div class="container">
+                    <div class="nav-left">
+                        <a class="nav-item">
+                            <h3>Logo goes here</h3>
+                        </a>
+                        <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
+                        <a class="nav-item is-tab is-hidden-mobile">My profile</a>
+                    </div>
+                    <span class="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <div class="nav-right nav-menu">
+                        <!--toggle is-active on nav-menu in js-->
+                        <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+                        <a class="nav-item is-tab is-hidden-tablet">My profile</a>
+                        <i class="nav-item"><i class="fa fa-user-circle"></i>&nbspHello, babanjure</i>
+                        <a class="nav-item is-tab">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        
+            <div class="hero-body">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+    </section>
+    
+</body>
+</html>

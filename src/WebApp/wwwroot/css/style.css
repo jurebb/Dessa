@@ -1,3 +1,7 @@
 ﻿.login .fa, .login .control{
     color: #363636;
 }
+
+.hero-body .card {
+    margin-top: 12px;
+}

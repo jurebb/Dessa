@@ -1,49 +1,188 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Login</title>
-    <link rel="stylesheet" href="~/lib/bulma/css/bulma.css" />
-    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="~/css/style.css" />
-</head>
-<body>
-    <section class="hero is-alt is-fullheight is-dark">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-vcentered">
-                    <div class="column is-4 is-offset-4">
-                        <h1 class="title">
-                            INDEX
-                        </h1>
-                        <h2 class="subtitle">
-                            INDEX
-                        </h2>
-                        <div class="box login">
-                            <p class="control has-icon">
-                                <input class="input" type="email" placeholder="Email">
-                                <i class="fa fa-envelope"></i>
-                            </p>
-                            <p class="control has-icon">
-                                <input class="input" type="password" placeholder="Password">
-                                <i class="fa fa-lock"></i>
-                            </p>
-                            
-                            <p class="control">
-                                <button class="button is-warning is-medium">
-                                    <i class="fa fa-user"></i>
-                                    &nbspLogin
-                                </button>
-                                <button class="button is-link is-medium">
-                                    Register
-                                </button>
-                            </p>
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="cards-container">
+    <div class="columns">
+        <div class="column is-offset-one-third is-one-third">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Component
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#css</a> <a>#responsive</a>
+                        <br>
+                        <small>11:09 PM - 1 Jan 2016</small>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">Save</a>
+                    <a class="card-footer-item">Edit</a>
+                    <a class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+                            </figure>
                         </div>
+                        <div class="media-content">
+                            <p class="title is-4">John Smith</p>
+                            <p class="subtitle is-6">johnsmith</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>bulmaio</a>.
+                        <a>#css</a> <a>#responsive</a>
+                        <br>
+                        <small>11:09 PM - 1 Jan 2016</small>
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Component
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#css</a> <a>#responsive</a>
+                        <br>
+                        <small>11:09 PM - 1 Jan 2016</small>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">Save</a>
+                    <a class="card-footer-item">Edit</a>
+                    <a class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Component
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#css</a> <a>#responsive</a>
+                        <br>
+                        <small>11:09 PM - 1 Jan 2016</small>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">Save</a>
+                    <a class="card-footer-item">Edit</a>
+                    <a class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Component
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#css</a> <a>#responsive</a>
+                        <br>
+                        <small>11:09 PM - 1 Jan 2016</small>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">Save</a>
+                    <a class="card-footer-item">Edit</a>
+                    <a class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Component
+                    </p>
+                    <a class="card-header-icon">
+                        <span class="icon">
+                            <i class="fa fa-angle-down"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#css</a> <a>#responsive</a>
+                        <br>
+                        <small>11:09 PM - 1 Jan 2016</small>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">Save</a>
+                    <a class="card-footer-item">Edit</a>
+                    <a class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Component
+                        </p>
+                        <a class="card-header-icon">
+                            <span class="icon">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#css</a> <a>#responsive</a>
+                            <br>
+                            <small>11:09 PM - 1 Jan 2016</small>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a class="card-footer-item">Save</a>
+                        <a class="card-footer-item">Edit</a>
+                        <a class="card-footer-item">Delete</a>
+                    </footer>
+            </div>
         </div>
-    </section>
-</body>
-</html>
+    </div>
+</div>
