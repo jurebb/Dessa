@@ -47,37 +47,46 @@ namespace WebApp.Models
                     DateCreated = DateTime.Now,
                     NumOfOptions = 2,
                     Question = "What should I name my cat?",
-                    SumVotes = 0,
+                    SumVotes = 1,
                     UrgentFlag = false,
                     UserName = "babanjure",
                     Options = new List<Option>()
                     {
-                        new Option() { Text = "Micko", Order = 0, Votes = 0},
+                        new Option() { Text = "Micko", Order = 0, Votes = 1},
                         new Option() { Text = "Maroje", Order = 1, Votes = 0}
+                    },
+                    History = new List<HistoryPoll>()
+                    {
+                        new HistoryPoll() { Username = "alterjure" }
                     }
                 };
                 _context.Polls.Add(poll1);
                 _context.Options.AddRange(poll1.Options);
+                _context.HistoryPolls.AddRange(poll1.History);
 
                 Poll poll2 = new Poll()
                 {
                     DateCreated = DateTime.Now,
                     NumOfOptions = 3,
                     Question = "Koju marku TV-a odabrati?",
-                    SumVotes = 0,
+                    SumVotes = 1,
                     UrgentFlag = false,
                     UserName = "babanjure",
                     Options = new List<Option>()
                     {
                         new Option() { Text = "Philips", Order = 0, Votes = 0},
-                        new Option() { Text = "Samsung", Order = 1, Votes = 0},
+                        new Option() { Text = "Samsung", Order = 1, Votes = 1},
                         new Option() { Text = "LG", Order = 2, Votes = 0}
+                    },
+                    History = new List<HistoryPoll>()
+                    {
+                        new HistoryPoll() { Username = "alterjure" }
                     }
                 };
                 _context.Polls.Add(poll2);
                 _context.Options.AddRange(poll2.Options);
+                _context.HistoryPolls.AddRange(poll1.History);
 
-                
             }
             
             if(!_context.Decisions.Any())

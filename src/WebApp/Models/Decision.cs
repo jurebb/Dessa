@@ -18,5 +18,7 @@ namespace WebApp.Models
         public int FirstSumVotes { get; set; }
         public int SecondSumVotes { get; set; }
         public string Text { get; set; }
+
+        public ICollection<HistoryDecision> History { get; set; }
     }
 }

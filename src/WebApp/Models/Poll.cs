@@ -17,5 +17,7 @@ namespace WebApp.Models
         public ICollection<Option> Options { get; set; }
 
         public int SumVotes { get; set; }
+
+        public ICollection<HistoryPoll> History { get; set; }
     }
 }
