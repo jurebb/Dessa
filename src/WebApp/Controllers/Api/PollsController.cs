@@ -23,7 +23,7 @@ namespace WebApp.Controllers.Api
         }
 
         [HttpGet("api/polls")]
-        public IActionResult GetLatest()                //TODO check if 'Get()' req'd?
+        public IActionResult GetLatest() 
         {
             try
             {
@@ -60,6 +60,26 @@ namespace WebApp.Controllers.Api
                 
             }
             return BadRequest("Error on poll voting");
+        }
+
+        [HttpPost("api/polls")]
+        public async Task<IActionResult> Post([FromBody]PollsViewModel poll)            //DECS assuming that we will nest array of options inside a poll. presumably doable with seperate jsons if not working.
+        {                                                                               //OR with seperate api calls (e.g. api/polls and then api/options/{pollid} for each opt.)   //TODO
+            if(ModelState.IsValid)
+            {
+                var newPoll = Mapper.Map<Poll>(poll);
+                newPoll.UserName = User.Identity.Name;
+                newPoll.DateCreated = DateTime.Now;
+                newPoll.NumOfOptions = newPoll.Options.Count();
+                newPoll.SumVotes = 0;
+                _repository.AddPollWithOptions(newPoll);
+
+                if (await _repository.SaveChangesAsync())
+                {
+                    return Created($"api/polls/{newPoll.DateCreated.ToString()}", Mapper.Map<PollsViewModel>(newPoll));
+                }
+            }
+            return BadRequest("Failed to save the poll");
         }
     }
 }

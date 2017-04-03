@@ -12,6 +12,7 @@ namespace WebApp.Models
         Poll GetPollById(string pollId);
         void VotePollOption(string pollId, string optionOrder, string Username);
         bool CheckPollHistory(string pollId, string Username);
+        void AddPollWithOptions(Poll newPoll);
 
         Task<bool> SaveChangesAsync();
     }

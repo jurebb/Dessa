@@ -54,6 +54,11 @@ namespace WebApp.Models
             return false;
         }
 
+        public void AddPollWithOptions(Poll newPoll)
+        {
+            _context.Polls.Add(newPoll);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return (await _context.SaveChangesAsync()) > 0;
