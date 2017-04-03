@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers.Api
 {
+    [Authorize]
     public class PollsController : Controller
     {
         private IWebAppRepository _repository;
@@ -31,6 +34,26 @@ namespace WebApp.Controllers.Api
             {
                 return BadRequest("Failed to get data");
             }
+        }
+
+        [HttpPut("api/polls/v/{pollId}")]
+        public async Task<IActionResult> VotePoll([FromBody]dynamic data, string pollId)
+        {
+            string optionOrder = data["optionOrder"];
+            try
+            {
+                //TODO check history
+                _repository.VotePollOption(pollId, optionOrder);
+                if (await _repository.SaveChangesAsync())
+                {
+                    return Ok();
+                }
+            }
+            catch
+            {
+                
+            }
+            return BadRequest("Error on poll voting");
         }
     }
 }

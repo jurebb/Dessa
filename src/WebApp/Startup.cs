@@ -44,8 +44,7 @@ namespace WebApp
                 config.Password.RequiredLength = 8;
                 config.User.RequireUniqueEmail = true;
                 config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";                 //TODO Change to sth like "/Auth/Login"
-                //TODO API authentification
-                /*config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()                    //TODO API authentification
+                config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
                 {
                     OnRedirectToLogin = async ctx =>
                     {
@@ -59,7 +58,7 @@ namespace WebApp
                         }
                         await Task.Yield();
                     }
-                };*/
+                };
             }).AddEntityFrameworkStores<WebAppContext>();
 
             services.AddDbContext<WebAppContext>();

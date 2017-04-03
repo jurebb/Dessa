@@ -11,6 +11,7 @@ namespace WebApp.ViewModels
     {
         //DECS returnat options i history u sklopu ovog view modela? raditi odvojen API call za history?
 
+        public int Id { get; set; }
         public DateTime DateCreated { get; set; }
         public string UserName { get; set; }
         public bool UrgentFlag { get; set; }        //TODO maybe remove
