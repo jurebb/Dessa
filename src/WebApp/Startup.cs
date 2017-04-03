@@ -12,6 +12,8 @@ using WebApp.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using WebApp.ViewModels;
 
 namespace WebApp
 {
@@ -76,6 +78,11 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WebAppSeedData seeder)
         {
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<PollsViewModel, Poll>().ReverseMap();
+            });
+
             loggerFactory.AddConsole();
 
             if (env.IsDevelopment())

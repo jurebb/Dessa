@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApp.Models
+namespace WebApp.Controllers.Api
 {
-    public interface IWebAppRepository
+    public class DecisionsController
     {
-        IEnumerable<Poll> GetLatestPolls();
+        
     }
 }
