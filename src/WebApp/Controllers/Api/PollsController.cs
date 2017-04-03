@@ -42,11 +42,17 @@ namespace WebApp.Controllers.Api
             string optionOrder = data["optionOrder"];
             try
             {
-                //TODO check history
-                _repository.VotePollOption(pollId, optionOrder);
-                if (await _repository.SaveChangesAsync())
+                if (! _repository.CheckPollHistory(pollId, User.Identity.Name))
                 {
-                    return Ok();
+                    _repository.VotePollOption(pollId, optionOrder, User.Identity.Name);
+                    if (await _repository.SaveChangesAsync())
+                    {
+                        return Ok();
+                    }
+                }
+                else
+                {
+                    return NotFound("Already voted");
                 }
             }
             catch

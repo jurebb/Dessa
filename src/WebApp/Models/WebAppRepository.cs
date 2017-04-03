@@ -26,15 +26,32 @@ namespace WebApp.Models
             return _context.Polls.Include(t => t.Options).Include(t => t.History).Where(t => t.Id == int.Parse(pollId)).FirstOrDefault();
         }
 
-        public void VotePollOption(string pollId, string optionOrder)
+        public void VotePollOption(string pollId, string optionOrder, string Username)
         {
             var poll = GetPollById(pollId);
             var option = poll.Options.Where(t => t.Order == int.Parse(optionOrder)).FirstOrDefault();
             option.Votes++;
             poll.SumVotes++;
-            //TODO add history
+            //history
+            var history = new HistoryPoll()
+            {
+                Username = Username
+            };
+            poll.History.Add(history);
+
             _context.Polls.Update(poll);
             _context.Options.Update(option);
+            _context.HistoryPolls.Add(history);
+        }
+        
+        public bool CheckPollHistory(string pollId, string Username)
+        {
+            var poll = GetPollById(pollId);
+            if(poll.History.Any(t => t.Username == Username))
+            {
+                return true;
+            }
+            return false;
         }
 
         public async Task<bool> SaveChangesAsync()

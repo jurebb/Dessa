@@ -10,7 +10,9 @@ namespace WebApp.Models
     {
         IEnumerable<Poll> GetLatestPolls();
         Poll GetPollById(string pollId);
-        void VotePollOption(string pollId, string optionOrder);
+        void VotePollOption(string pollId, string optionOrder, string Username);
+        bool CheckPollHistory(string pollId, string Username);
+
         Task<bool> SaveChangesAsync();
     }
 }
