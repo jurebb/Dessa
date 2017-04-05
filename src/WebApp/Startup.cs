@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using WebApp.ViewModels;
+using System.IO;
 
 namespace WebApp
 {
@@ -88,6 +89,19 @@ namespace WebApp
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.Use(async (context, next) =>
+            {
+                await next();
+
+                if (context.Response.StatusCode == 404                                  //uz ovaj dio koda, ako otidjemo na 'trash' URL, baca nas na index.html u wwwroot
+                    && !Path.HasExtension(context.Request.Path.Value))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+
             app.UseStaticFiles();
 
             app.UseIdentity();
