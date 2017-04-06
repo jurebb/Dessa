@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit }  from '@angular/core';
 
 import { IPoll } from './poll';
-//import { PolltService } from './poll.service';
+import { PollService } from './poll.service';
 
 @Component({
     selector: 'poll-list',
@@ -13,17 +13,17 @@ export class PollListComponent //implements OnInit
     pageTitle: string = 'Poll List';
     
     //listFilter: string;
-    //errorMessage: string;
+    errorMessage: string;
 
     polls: IPoll[];
 
-    //constructor(private _productService: ProductService) {
+    constructor(private _pollService: PollService) {
 
-    //}
+    }
 
-    //ngOnInit(): void {
-    //    this._productService.getProducts()
-    //        .subscribe(products => this.products = products,
-    //        error => this.errorMessage = <any>error);
-    //}
+    ngOnInit(): void {
+        this._pollService.getPolls()
+            .subscribe(polls => this.polls = polls,
+            error => this.errorMessage = <any>error);
+    }
 }

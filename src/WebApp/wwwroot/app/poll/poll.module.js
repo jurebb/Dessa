@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var poll_list_component_1 = require('./poll-list.component');
 var common_1 = require('@angular/common');
+var poll_service_1 = require('./poll.service');
 var PollModule = (function () {
     function PollModule() {
     }
@@ -23,7 +24,9 @@ var PollModule = (function () {
             exports: [
                 poll_list_component_1.PollListComponent
             ],
-            providers: []
+            providers: [
+                poll_service_1.PollService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], PollModule);

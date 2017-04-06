@@ -1,6 +1,7 @@
 ﻿import { NgModule } from '@angular/core';
 import { PollListComponent } from './poll-list.component';
-import { CommonModule }       from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { PollService } from './poll.service';
 
 
 @NgModule({
@@ -11,6 +12,8 @@ import { CommonModule }       from '@angular/common';
     exports: [
         PollListComponent
     ],
-    providers: []
+    providers: [
+        PollService
+    ]
 })
 export class PollModule { }

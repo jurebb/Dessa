@@ -9,20 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-//import { PolltService } from './poll.service';
+var poll_service_1 = require('./poll.service');
 var PollListComponent //implements OnInit 
  = (function () {
     function PollListComponent //implements OnInit 
-        () {
+        (_pollService) {
+        this._pollService = _pollService;
         this.pageTitle = 'Poll List';
     }
+    PollListComponent //implements OnInit 
+    .prototype.ngOnInit = function () {
+        var _this = this;
+        this._pollService.getPolls()
+            .subscribe(function (polls) { return _this.polls = polls; }, function (error) { return _this.errorMessage = error; });
+    };
     PollListComponent //implements OnInit 
      = __decorate([
         core_1.Component({
             selector: 'poll-list',
             templateUrl: 'app/poll/poll-list.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [poll_service_1.PollService])
     ], PollListComponent //implements OnInit 
     );
     return PollListComponent //implements OnInit 
