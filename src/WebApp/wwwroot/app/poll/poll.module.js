@@ -9,17 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var poll_list_component_1 = require('./poll-list.component');
+var common_1 = require('@angular/common');
+var PollModule = (function () {
+    function PollModule() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: '<poll-list></poll-list>'
+    PollModule = __decorate([
+        core_1.NgModule({
+            imports: [common_1.CommonModule],
+            declarations: [
+                poll_list_component_1.PollListComponent
+            ],
+            exports: [
+                poll_list_component_1.PollListComponent
+            ],
+            providers: []
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], PollModule);
+    return PollModule;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.PollModule = PollModule;
+//# sourceMappingURL=poll.module.js.map
