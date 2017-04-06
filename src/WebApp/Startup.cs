@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using WebApp.ViewModels;
 using System.IO;
+using Microsoft.AspNetCore.SpaServices;
 
 namespace WebApp
 {
@@ -90,7 +91,7 @@ namespace WebApp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Use(async (context, next) =>
+            /*app.Use(async (context, next) =>
             {
                 await next();
 
@@ -100,7 +101,7 @@ namespace WebApp
                     context.Request.Path = "/index.html";
                     await next();
                 }
-            });
+            });*/
 
             app.UseStaticFiles();
 
@@ -113,6 +114,8 @@ namespace WebApp
                     template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "Home", action = "Index" }
                     );
+
+                //config.MapSpaFallbackRoute("spa-fallback", new { controller = "Auth", action = "Register" });
             });
 
             seeder.EnsureSeedData().Wait();
