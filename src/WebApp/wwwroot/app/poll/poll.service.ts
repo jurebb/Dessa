@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/do';
@@ -12,6 +12,7 @@ import { IPoll } from './poll';
 @Injectable()
 export class PollService {
     private _pollUrl = 'api/polls';
+    private _voteUrl = 'api/polls/v/';
     
     constructor(private _http: Http) { }
 
@@ -25,6 +26,16 @@ export class PollService {
     getPoll(id: number): Observable<IPoll> {
         return this.getPolls()
             .map((products: IPoll[]) => products.find(p => p.id === id));
+    }
+
+    voteOption(pollId: string, optionOrder: string): Observable<IPoll[]> {
+        let body = JSON.stringify({ 'optionOrder': optionOrder });
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this._http
+            .put(this._voteUrl + pollId, body, options)
+            .map((response: Response) => <IPoll[]>response.json())
+            .catch(this.handleError);
     }
 
     private handleError(error: Response) {

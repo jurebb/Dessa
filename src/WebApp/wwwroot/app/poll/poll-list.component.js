@@ -19,6 +19,14 @@ var PollListComponent //implements OnInit
         this.pageTitle = 'Poll List';
     }
     PollListComponent //implements OnInit 
+    .prototype.voteOption = function (pollId, optionId, event) {
+        var _this = this;
+        this._pollService.voteOption(pollId, optionId)
+            .subscribe(function (polls) { return _this.polls = polls; }, function (error) { return _this.errorMessage = error; });
+        //event.srcElement.children[0].attributes.innerHTML = this.voteNumUpdated;
+    };
+    ;
+    PollListComponent //implements OnInit 
     .prototype.ngOnInit = function () {
         var _this = this;
         this._pollService.getPolls()

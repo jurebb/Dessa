@@ -45,9 +45,10 @@ namespace WebApp.Controllers.Api
                 if (! _repository.CheckPollHistory(pollId, User.Identity.Name))
                 {
                     _repository.VotePollOption(pollId, optionOrder, User.Identity.Name);
+                    var updatedVote = _repository.GetLatestPolls();
                     if (await _repository.SaveChangesAsync())
                     {
-                        return Ok();
+                        return Ok(Mapper.Map<IEnumerable<PollsViewModel>>(updatedVote));
                     }
                 }
                 else

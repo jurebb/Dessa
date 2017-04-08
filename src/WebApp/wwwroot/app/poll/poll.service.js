@@ -19,6 +19,7 @@ var PollService = (function () {
     function PollService(_http) {
         this._http = _http;
         this._pollUrl = 'api/polls';
+        this._voteUrl = 'api/polls/v/';
     }
     PollService.prototype.getPolls = function () {
         return this._http.get(this._pollUrl)
@@ -29,6 +30,15 @@ var PollService = (function () {
     PollService.prototype.getPoll = function (id) {
         return this.getPolls()
             .map(function (products) { return products.find(function (p) { return p.id === id; }); });
+    };
+    PollService.prototype.voteOption = function (pollId, optionOrder) {
+        var body = JSON.stringify({ 'optionOrder': optionOrder });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http
+            .put(this._voteUrl + pollId, body, options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
     };
     PollService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

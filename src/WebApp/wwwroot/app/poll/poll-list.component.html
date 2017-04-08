@@ -18,6 +18,7 @@
         </div>
     </div>
     <footer class="card-footer" *ngFor='let option of poll.options'>
-        <a class="card-footer-item">{{option.text}} : {{option.votes}}</a>
+        <a class="card-footer-item" (click)='voteOption(poll.id, option.order, $event)'>{{option.text}}: &nbsp; <h6  [innerHTML]="option.votes"></h6></a>
+        
     </footer>
 </div>

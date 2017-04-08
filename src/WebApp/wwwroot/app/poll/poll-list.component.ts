@@ -16,12 +16,21 @@ export class PollListComponent //implements OnInit
     
     //listFilter: string;
     errorMessage: string;
+    voteNumUpdated: string;
 
     polls: IPoll[];
 
     constructor(private _pollService: PollService) {
 
     }
+
+    voteOption(pollId: string, optionId: string, event): void {
+        this._pollService.voteOption(pollId, optionId)
+            .subscribe(polls => this.polls = polls,
+            error => this.errorMessage = <any>error);
+        //event.srcElement.children[0].attributes.innerHTML = this.voteNumUpdated;
+        
+    };
 
     ngOnInit(): void {
         this._pollService.getPolls()
