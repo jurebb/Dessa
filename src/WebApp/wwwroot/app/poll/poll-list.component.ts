@@ -3,6 +3,8 @@
 import { IPoll } from './poll';
 import { PollService } from './poll.service';
 
+//import { IPollOptions } from './poll-options';
+
 @Component({
     selector: 'poll-list',
     templateUrl: 'app/poll/poll-list.component.html',

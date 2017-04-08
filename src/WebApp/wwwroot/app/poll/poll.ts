@@ -1,4 +1,6 @@
 ﻿/* Defines the poll entity */
+import { IPollOptions } from './poll-options';
+
 export interface IPoll {
     id: number;
     dateCreated: string;
@@ -6,7 +8,7 @@ export interface IPoll {
     urgentFlag: boolean;
     question: string;
     numOfOptions: number;
-    options: string[];      //options[]
+    options: IPollOptions[];      //options[]
     sumVotes: number;
-    history: string[];      //history[]
+    //history: string[];      //history[]
 }

@@ -1,8 +1,8 @@
-﻿<div class="card">
+﻿<div class="card" *ngFor='let poll of polls'>
     
-    <header class="card-header" *ngIf='products'> <!--TODO REmove ngif-->
+    <header class="card-header" > <!--TODO REmove ngif-->
         <p class="card-header-title">
-            {{pageTitle}}
+            {{poll.userName}}
         </p>
         <a class="card-header-icon">
             <span class="icon">
@@ -10,16 +10,14 @@
             </span>
         </a>
     </header>
-    <div class="card-content">
+    <div class="card-content" >
         <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a>#css</a> <a>#responsive</a>
+            {{poll.question}} <a>#css</a> <a>#responsive</a>
             <br>
-            <small>11:09 PM - 1 Jan 2016</small>
+            <small>{{poll.dateCreated}}</small>
         </div>
     </div>
-    <footer class="card-footer">
-        <a class="card-footer-item">Save</a>
-        <a class="card-footer-item">Edit</a>
-        <a class="card-footer-item">Delete</a>
+    <footer class="card-footer" *ngFor='let option of poll.options'>
+        <a class="card-footer-item">{{option.text}} : {{option.votes}}</a>
     </footer>
 </div>

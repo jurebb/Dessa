@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var poll_service_1 = require('./poll.service');
+//import { IPollOptions } from './poll-options';
 var PollListComponent //implements OnInit 
  = (function () {
     function PollListComponent //implements OnInit 
