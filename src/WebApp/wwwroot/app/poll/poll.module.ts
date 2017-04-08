@@ -1,16 +1,25 @@
 ﻿import { NgModule } from '@angular/core';
 import { PollListComponent } from './poll-list.component';
+import { NewPollComponent } from './new-poll.component';
 import { CommonModule } from '@angular/common';
 import { PollService } from './poll.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-    imports: [CommonModule ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild([
+            { path: 'polls', component: PollListComponent },
+            { path: 'newpoll', component: NewPollComponent }
+        ])],
     declarations: [
-        PollListComponent
+        PollListComponent,
+        NewPollComponent
     ],
     exports: [
-        PollListComponent
+        PollListComponent,
+        NewPollComponent
     ],
     providers: [
         PollService

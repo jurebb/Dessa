@@ -13,12 +13,17 @@ var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var poll_module_1 = require('./poll/poll.module');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule,
+                router_1.RouterModule.forRoot([
+                    { path: '', redirectTo: 'polls', pathMatch: 'full' },
+                    { path: '**', redirectTo: 'polls', pathMatch: 'full' }
+                ]),
                 http_1.HttpModule,
                 poll_module_1.PollModule],
             declarations: [app_component_1.AppComponent],

@@ -9,19 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-require('rxjs/Rx');
-var AppComponent = (function () {
-    function AppComponent() {
+var NewPollComponent //implements OnInit 
+ = (function () {
+    function NewPollComponent //implements OnInit 
+        () {
     }
-    AppComponent = __decorate([
+    NewPollComponent //implements OnInit 
+     = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            //template: '<poll-list></poll-list>'
-            template: '<router-outlet></router-outlet>'
+            selector: 'new-poll',
+            template: '<h1>new poll</h1>',
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], NewPollComponent //implements OnInit 
+    );
+    return NewPollComponent //implements OnInit 
+    ;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.NewPollComponent //implements OnInit 
+ = NewPollComponent //implements OnInit 
+;
+//# sourceMappingURL=new-poll.component.js.map
