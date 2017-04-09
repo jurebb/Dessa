@@ -44,6 +44,7 @@ namespace WebApp
             services.AddIdentity<WebAppUser, IdentityRole>(config =>
             {
                 config.Password.RequiredLength = 8;
+                config.Password.RequireNonAlphanumeric = false;
                 config.User.RequireUniqueEmail = true;
                 config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";                 //TODO Change to sth like "/Auth/Login"
                 config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
@@ -115,7 +116,7 @@ namespace WebApp
                     defaults: new { controller = "Home", action = "Index" }
                     );
 
-                //config.MapSpaFallbackRoute("spa-fallback", new { controller = "Auth", action = "Register" });
+                config.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
 
             seeder.EnsureSeedData().Wait();

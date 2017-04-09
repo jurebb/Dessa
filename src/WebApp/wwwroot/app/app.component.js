@@ -17,7 +17,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             //template: '<poll-list></poll-list>'
-            template: '<router-outlet></router-outlet>'
+            template: " <li><a [routerLink]=\"['/polls']\">Polls</a></li>\n                <li><a [routerLink]=\"['/newpoll']\">New Poll</a></li >\n                <router-outlet></router-outlet>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

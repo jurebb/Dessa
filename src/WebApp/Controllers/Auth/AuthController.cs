@@ -12,11 +12,15 @@ namespace WebApp.Controllers.Auth
 {
     public class AuthController : Controller
     {
+        private WebAppContext _context;
         private SignInManager<WebAppUser> _manager;
+        private UserManager<WebAppUser> _userManager;
 
-        public AuthController(SignInManager<WebAppUser> manager)
+        public AuthController(SignInManager<WebAppUser> manager, UserManager<WebAppUser> userManager, WebAppContext context)
         {
             _manager = manager;
+            _userManager = userManager;
+            _context = context;
         }
         
         public IActionResult Login()
@@ -66,6 +70,33 @@ namespace WebApp.Controllers.Auth
 
         public IActionResult Register()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                if (vm.Password == vm.RepeatedPassword)
+                {
+                    if (await _userManager.FindByNameAsync(vm.Username) == null || _userManager.FindByEmailAsync(vm.Email) == null)
+                    {
+                        var NewUser = new WebAppUser()
+                        {
+                            FirstName = vm.FirstName,
+                            LastName = vm.LastName,
+                            UserName = vm.Username,
+                            Email = vm.Email,
+                            DateOfBirth = vm.DateOfBirth
+                        };
+                        await _userManager.CreateAsync(NewUser, vm.Password);
+                        _context.SaveChangesAsync().Wait();
+                        return RedirectToAction("Login", "Auth");
+                    }
+                }
+                
+            }
             return View();
         }
     }

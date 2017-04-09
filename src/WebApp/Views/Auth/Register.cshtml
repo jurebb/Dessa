@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebApp.ViewModels.RegisterViewModel
+
+@{
     Layout = "AuthLayout";
     ViewBag.Title = "Register";
 }
@@ -9,42 +11,41 @@
 <h2 class="subtitle">
     Please enter your registration information
 </h2>
-<my-app>Loading...</my-app>
 <div class="box login">
-    <p class="control has-icon">
-        <input class="input" type="email" placeholder="Email">
-        <i class="fa fa-envelope"></i>
-    </p>
-    <p class="control has-icon">
-        <input class="input" type="text" placeholder="First Name">
-        <i class="fa fa-user"></i>
-    </p>
-    <p class="control has-icon">
-        <input class="input" type="text" placeholder="Last Name">
-        <i class="fa fa-user"></i>
-    </p>
-    <p class="control has-icon">
-        <input class="input" type="date" placeholder="Date of Birth">
-        <i class="fa fa-calendar"></i>
-    </p>
-    <p class="control has-icon">
-        <input class="input" type="text" placeholder="Username">
-        <i class="fa fa-user"></i>
-    </p>
-    <p class="control has-icon">
-        <input class="input" type="password" placeholder="Password">
-        <i class="fa fa-lock"></i>
-    </p>
-    <p class="control has-icon">
-        <input class="input" type="password" placeholder="Repeat password">
-        <i class="fa fa-lock"></i>
-    </p>
+    <form method="post" novalidate>
+        <p class="control has-icon">
+            <input asp-for="Email" class="input" type="email" placeholder="Email">
+            <i class="fa fa-envelope"></i>
+        </p>
+        <p class="control has-icon">
+            <input asp-for="FirstName" class="input" type="text" placeholder="First Name">
+            <i class="fa fa-user"></i>
+        </p>
+        <p class="control has-icon">
+            <input asp-for="LastName" class="input" type="text" placeholder="Last Name">
+            <i class="fa fa-user"></i>
+        </p>
+        <p class="control has-icon">
+            <input asp-for="DateOfBirth" class="input" type="date" placeholder="Date of Birth">
+            <i class="fa fa-calendar"></i>
+        </p>
+        <p class="control has-icon">
+            <input asp-for="Username" class="input" type="text" placeholder="Username">
+            <i class="fa fa-user"></i>
+        </p>
+        <p class="control has-icon">
+            <input asp-for="Password" class="input" type="password" placeholder="Password">
+            <i class="fa fa-lock"></i>
+        </p>
+        <p class="control has-icon">
+            <input asp-for="RepeatedPassword" class="input" type="password" placeholder="Repeat password">
+            <i class="fa fa-lock"></i>
+        </p>
 
-    <p class="control">
-        <button class="button is-warning is-medium">
-            <i class="fa fa-user-plus"></i>
-            &nbspRegister
-        </button>
-        
-    </p>
+        <p class="control">
+            <input type="submit" class="button is-warning is-medium" value="Register" />
+            
+
+        </p>
+    </form>
 </div>
