@@ -1,0 +1,28 @@
+﻿<form novalidate (ngSubmit)="onSubmit(poll)" [formGroup]="poll">
+    <label>
+        <span>Full question</span>
+        <input type="text"
+               placeholder="Your full question"
+               formControlName="question">
+    </label>
+    <div class="error"
+         *ngIf="poll.get('question').hasError('required') && poll.get('question').touched">
+        Question is required
+    </div>
+    <div formGroupName="options">
+        <label>
+            <span>order number</span>
+            <input type="text"
+                   placeholder="Your order number address"
+                   formControlName="order">
+        </label>
+        <label>
+            <span>order text</span>
+            <input type="text"
+                   placeholder="your text"
+                   formControlName="text">
+        </label>
+    </div>
+    <button type="submit" [disabled]="poll.invalid">Publish</button>
+    
+</form>

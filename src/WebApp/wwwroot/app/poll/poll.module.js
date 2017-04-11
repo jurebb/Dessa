@@ -14,6 +14,8 @@ var new_poll_component_1 = require('./new-poll.component');
 var common_1 = require('@angular/common');
 var poll_service_1 = require('./poll.service');
 var router_1 = require('@angular/router');
+var forms_1 = require('@angular/forms'); //as of new-poll
+var forms_2 = require('@angular/forms');
 var PollModule = (function () {
     function PollModule() {
     }
@@ -24,7 +26,10 @@ var PollModule = (function () {
                 router_1.RouterModule.forChild([
                     { path: 'polls', component: poll_list_component_1.PollListComponent },
                     { path: 'newpoll', component: new_poll_component_1.NewPollComponent }
-                ])],
+                ]),
+                forms_1.FormsModule,
+                forms_2.ReactiveFormsModule
+            ],
             declarations: [
                 poll_list_component_1.PollListComponent,
                 new_poll_component_1.NewPollComponent

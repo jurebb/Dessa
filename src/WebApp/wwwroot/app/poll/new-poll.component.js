@@ -9,24 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var NewPollComponent //implements OnInit 
- = (function () {
-    function NewPollComponent //implements OnInit 
-        () {
+var forms_1 = require('@angular/forms');
+var NewPollComponent = (function () {
+    function NewPollComponent() {
     }
-    NewPollComponent //implements OnInit 
-     = __decorate([
+    NewPollComponent.prototype.onSubmit = function (_a) {
+        var value = _a.value, valid = _a.valid;
+        console.log(value, valid);
+    };
+    NewPollComponent.prototype.ngOnInit = function () {
+        this.poll = new forms_1.FormGroup({
+            question: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2)]),
+            options: new forms_1.FormGroup({
+                order: new forms_1.FormControl('', forms_1.Validators.required),
+                text: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2)])
+            })
+        });
+    };
+    NewPollComponent = __decorate([
         core_1.Component({
             selector: 'new-poll',
-            template: '<h1>new poll</h1>',
+            templateUrl: 'app/poll/new-poll.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], NewPollComponent //implements OnInit 
-    );
-    return NewPollComponent //implements OnInit 
-    ;
+    ], NewPollComponent);
+    return NewPollComponent;
 }());
-exports.NewPollComponent //implements OnInit 
- = NewPollComponent //implements OnInit 
-;
+exports.NewPollComponent = NewPollComponent;
 //# sourceMappingURL=new-poll.component.js.map
