@@ -26,7 +26,7 @@ namespace WebApp.Models
 
         public DbSet<Poll> Polls { get; set; }
         public DbSet<Option> Options { get; set; }
-        public DbSet<Decision> Decisions { get; set; }
+        //public DbSet<Decision> Decisions { get; set; }
 
         public DbSet<HistoryPoll> HistoryPolls { get; set; }
         public DbSet<HistoryDecision> HistoryDecisions { get; set; }

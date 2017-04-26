@@ -1,28 +1,56 @@
-﻿<form novalidate (ngSubmit)="onSubmit(poll)" [formGroup]="poll">
-    <label>
-        <span>Full question</span>
-        <input type="text"
-               placeholder="Your full question"
-               formControlName="question">
-    </label>
-    <div class="error"
-         *ngIf="poll.get('question').hasError('required') && poll.get('question').touched">
-        Question is required
-    </div>
-    <div formGroupName="options">
-        <label>
-            <span>order number</span>
-            <input type="text"
-                   placeholder="Your order number address"
-                   formControlName="order">
-        </label>
-        <label>
-            <span>order text</span>
-            <input type="text"
-                   placeholder="your text"
-                   formControlName="text">
-        </label>
-    </div>
-    <button type="submit" [disabled]="poll.invalid">Publish</button>
-    
+﻿<div class="card">
+    <form [formGroup]="myPoll" novalidate (ngSubmit)="save(myPoll)">
+        <div class="card-content">
+            <div class="form-group field">
+                <label class="label">Question</label>
+                <p class="control"><input type="text" class="form-control input" formControlName="question"></p>
+                <small *ngIf="!myPoll.controls.question.valid" class="text-danger">
+                    Question is required (minimum 5 characters).
+                </small>
+            </div>
+        </div>
+
+        <!--urgent-->
+        <div class="card-content">
+            <label class="label">Is urgent</label>
+            <p class="control">
+                <label class="radio">
+                    <input type="radio" name="question">
+                    Yes
+                </label>
+                <label class="radio">
+                    <input type="radio" name="question">
+                    No
+                </label>
+            </p>
+        </div>
+
+        <!--options-->
+        <div class="card-content">
+            <div formArrayName="options">
+                <div *ngFor="let opt of myPoll.controls.options.controls; let i=index" class="panel panel-default">
+                    <div>
+                        <span class="label">Option {{i + 1}} <span class="fa fa-remove" style="cursor: pointer" *ngIf="myPoll.controls.options.controls.length > 1" (click)="removeOption(i)"></span> </span>
+                        
+                    </div>
+                    <div [formGroupName]="i">
+                        <new-option [group]="myPoll.controls.options.controls[i]"></new-option>
+                    </div>
+                </div>
+            </div>
+            <button class="button is-info is-small" (click)="addOption()" style="cursor: pointer">
+                Add another option +
+            </button>
+        </div>
+        <div class="card-content">
+            <div>
+                <button type="submit" class="button is-success is-medium" [disabled]="!myPoll.valid">Post</button>
+            </div>
+            <div>
+                <div>myPoll details:-</div>
+                <pre>Is myPoll valid?: <br>{{myPoll.valid | json}}</pre>
+                <pre>form value: <br>{{myPoll.value | json}}</pre>
+            </div>
+        </div>
 </form>
+</div>

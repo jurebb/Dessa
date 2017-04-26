@@ -88,7 +88,7 @@ namespace WebApp.Models
                 _context.HistoryPolls.AddRange(poll1.History);
 
             }
-            
+            /*
             if(!_context.Decisions.Any())
             {
                 Decision dec1 = new Decision()
@@ -106,6 +106,7 @@ namespace WebApp.Models
 
                 _context.Decisions.Add(dec1);
             }
+            */
 
             await _context.SaveChangesAsync();
         }

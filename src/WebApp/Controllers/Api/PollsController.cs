@@ -68,11 +68,16 @@ namespace WebApp.Controllers.Api
         {                                                                               //OR with seperate api calls (e.g. api/polls and then api/options/{pollid} for each opt.)   //TODO
             if(ModelState.IsValid)
             {
+                int optionCount = 0;
                 var newPoll = Mapper.Map<Poll>(poll);
                 newPoll.UserName = User.Identity.Name;
                 newPoll.DateCreated = DateTime.Now;
                 newPoll.NumOfOptions = newPoll.Options.Count();
                 newPoll.SumVotes = 0;
+                foreach(Option opt in newPoll.Options)
+                {
+                    opt.Order = optionCount++;
+                }
                 _repository.AddPollWithOptions(newPoll);
 
                 if (await _repository.SaveChangesAsync())

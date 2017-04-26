@@ -1,6 +1,7 @@
 ﻿import { NgModule } from '@angular/core';
 import { PollListComponent } from './poll-list.component';
 import { NewPollComponent } from './new-poll.component';
+import { NewOptionComponent } from './new-option.component';
 import { CommonModule } from '@angular/common';
 import { PollService } from './poll.service';
 import { RouterModule } from '@angular/router';
@@ -21,11 +22,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
     declarations: [
         PollListComponent,
-        NewPollComponent
+        NewPollComponent,
+        NewOptionComponent
     ],
     exports: [
         PollListComponent,
-        NewPollComponent
+        NewPollComponent,
+        NewOptionComponent
     ],
     providers: [
         PollService

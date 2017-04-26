@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var poll_list_component_1 = require('./poll-list.component');
 var new_poll_component_1 = require('./new-poll.component');
+var new_option_component_1 = require('./new-option.component');
 var common_1 = require('@angular/common');
 var poll_service_1 = require('./poll.service');
 var router_1 = require('@angular/router');
@@ -32,11 +33,13 @@ var PollModule = (function () {
             ],
             declarations: [
                 poll_list_component_1.PollListComponent,
-                new_poll_component_1.NewPollComponent
+                new_poll_component_1.NewPollComponent,
+                new_option_component_1.NewOptionComponent
             ],
             exports: [
                 poll_list_component_1.PollListComponent,
-                new_poll_component_1.NewPollComponent
+                new_poll_component_1.NewPollComponent,
+                new_option_component_1.NewOptionComponent
             ],
             providers: [
                 poll_service_1.PollService

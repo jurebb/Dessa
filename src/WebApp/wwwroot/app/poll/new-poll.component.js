@@ -11,27 +11,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var NewPollComponent = (function () {
-    function NewPollComponent() {
+    function NewPollComponent(fb) {
+        this.fb = fb;
     }
-    NewPollComponent.prototype.onSubmit = function (_a) {
-        var value = _a.value, valid = _a.valid;
+    /*
+    onSubmit({ value, valid }: { value: IPoll, valid: boolean }) {
         console.log(value, valid);
-    };
+    }*/
     NewPollComponent.prototype.ngOnInit = function () {
-        this.poll = new forms_1.FormGroup({
-            question: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2)]),
-            options: new forms_1.FormGroup({
-                order: new forms_1.FormControl('', forms_1.Validators.required),
-                text: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2)])
-            })
+        this.myPoll = this.fb.group({
+            question: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5)]],
+            options: this.fb.array([])
         });
+        // add address
+        this.addOption();
+        /* subscribe to addresses value changes */
+        // this.myForm.controls['addresses'].valueChanges.subscribe(x => {
+        //   console.log(x);
+        // })
+    };
+    NewPollComponent.prototype.initOption = function () {
+        return this.fb.group({
+            text: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]]
+        });
+    };
+    NewPollComponent.prototype.addOption = function () {
+        var control = this.myPoll.controls['options'];
+        var addrCtrl = this.initOption();
+        control.push(addrCtrl);
+        /* subscribe to individual address value changes */
+        // addrCtrl.valueChanges.subscribe(x => {
+        //   console.log(x);
+        // })
+    };
+    NewPollComponent.prototype.removeOption = function (i) {
+        var control = this.myPoll.controls['options'];
+        control.removeAt(i);
+    };
+    NewPollComponent.prototype.save = function (model) {
+        // call API to save
+        // ...
+        console.log(model);
     };
     NewPollComponent = __decorate([
         core_1.Component({
+            //moduleId: module.id,
             selector: 'new-poll',
             templateUrl: 'app/poll/new-poll.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
     ], NewPollComponent);
     return NewPollComponent;
 }());
