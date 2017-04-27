@@ -38,6 +38,17 @@ export class PollService {
             .catch(this.handleError);
     }
 
+    postPoll(data: IPoll): Observable<IPoll> {
+        //let body = JSON.stringify(data);
+        let body = data;
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this._http
+            .post(this._pollUrl, body, options)
+            .map((response: Response) => <IPoll>response.json())
+            .catch(this.handleError);
+    }
+
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

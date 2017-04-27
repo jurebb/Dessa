@@ -11,8 +11,12 @@ import { PollService } from './poll.service';
 })
 export class NewPollComponent implements OnInit {
     public myPoll: FormGroup;
+    pollRec: IPoll;
+    errorMessage: string;
 
-    constructor(private fb: FormBuilder) { }
+    pageTitle: string = 'New poll';
+
+    constructor(private fb: FormBuilder, private _pollService: PollService) { }
     /*
     onSubmit({ value, valid }: { value: IPoll, valid: boolean }) {
         console.log(value, valid);
@@ -57,8 +61,13 @@ export class NewPollComponent implements OnInit {
     }
 
     save(model: IPoll) {
-        // call API to save
-        // ...
-        console.log(model);
+       
+       console.log(model);
     }
+
+    postPoll(model: IPoll, event): void {
+        this._pollService.postPoll(model)
+            .subscribe(poll => this.pollRec = poll,
+            error => this.errorMessage = <any>error);
+    };
 }

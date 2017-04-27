@@ -40,6 +40,16 @@ var PollService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    PollService.prototype.postPoll = function (data) {
+        //let body = JSON.stringify(data);
+        var body = data;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http
+            .post(this._pollUrl, body, options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     PollService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

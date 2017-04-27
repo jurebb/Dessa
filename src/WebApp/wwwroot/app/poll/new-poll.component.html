@@ -38,13 +38,13 @@
                     </div>
                 </div>
             </div>
-            <button class="button is-info is-small" (click)="addOption()" style="cursor: pointer">
+            <a class="button is-info is-small" (click)="addOption()" style="cursor: pointer">
                 Add another option +
-            </button>
+            </a>
         </div>
         <div class="card-content">
             <div>
-                <button type="submit" class="button is-success is-medium" [disabled]="!myPoll.valid">Post</button>
+                <button type="submit" class="button is-success is-medium" [disabled]="!myPoll.valid"  (click)='postPoll(myPoll.value, $event)'>Post</button>
             </div>
             <div>
                 <div>myPoll details:-</div>

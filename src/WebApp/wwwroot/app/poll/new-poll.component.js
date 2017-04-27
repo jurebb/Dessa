@@ -10,9 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
+var poll_service_1 = require('./poll.service');
 var NewPollComponent = (function () {
-    function NewPollComponent(fb) {
+    function NewPollComponent(fb, _pollService) {
         this.fb = fb;
+        this._pollService = _pollService;
+        this.pageTitle = 'New poll';
     }
     /*
     onSubmit({ value, valid }: { value: IPoll, valid: boolean }) {
@@ -49,17 +52,21 @@ var NewPollComponent = (function () {
         control.removeAt(i);
     };
     NewPollComponent.prototype.save = function (model) {
-        // call API to save
-        // ...
         console.log(model);
     };
+    NewPollComponent.prototype.postPoll = function (model, event) {
+        var _this = this;
+        this._pollService.postPoll(model)
+            .subscribe(function (poll) { return _this.pollRec = poll; }, function (error) { return _this.errorMessage = error; });
+    };
+    ;
     NewPollComponent = __decorate([
         core_1.Component({
             //moduleId: module.id,
             selector: 'new-poll',
             templateUrl: 'app/poll/new-poll.component.html'
         }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder])
+        __metadata('design:paramtypes', [forms_1.FormBuilder, poll_service_1.PollService])
     ], NewPollComponent);
     return NewPollComponent;
 }());
