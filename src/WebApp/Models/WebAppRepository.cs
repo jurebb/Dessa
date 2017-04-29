@@ -18,7 +18,7 @@ namespace WebApp.Models
 
         public IEnumerable<Poll> GetLatestPolls()
         {
-            return _context.Polls.Include(t => t.Options).Include(t=> t.History).ToList();
+            return _context.Polls.Include(t => t.Options).Include(t=> t.History).OrderByDescending(t => t.DateCreated).Take(15).ToList();
         }
 
         public Poll GetPollById(string pollId)

@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { IPoll } from './poll';
 import { PollService } from './poll.service';
@@ -16,11 +17,8 @@ export class NewPollComponent implements OnInit {
 
     pageTitle: string = 'New poll';
 
-    constructor(private fb: FormBuilder, private _pollService: PollService) { }
-    /*
-    onSubmit({ value, valid }: { value: IPoll, valid: boolean }) {
-        console.log(value, valid);
-    }*/
+    constructor(private fb: FormBuilder, private _pollService: PollService, private router: Router) { }
+    
 
     ngOnInit() {
         this.myPoll = this.fb.group({
@@ -67,7 +65,10 @@ export class NewPollComponent implements OnInit {
 
     postPoll(model: IPoll, event): void {
         this._pollService.postPoll(model)
-            .subscribe(poll => this.pollRec = poll,
+            .subscribe(poll => {
+                this.pollRec = poll;
+                this.router.navigate(['polls']);
+            },
             error => this.errorMessage = <any>error);
     };
 }

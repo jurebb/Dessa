@@ -10,17 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
 var poll_service_1 = require('./poll.service');
 var NewPollComponent = (function () {
-    function NewPollComponent(fb, _pollService) {
+    function NewPollComponent(fb, _pollService, router) {
         this.fb = fb;
         this._pollService = _pollService;
+        this.router = router;
         this.pageTitle = 'New poll';
     }
-    /*
-    onSubmit({ value, valid }: { value: IPoll, valid: boolean }) {
-        console.log(value, valid);
-    }*/
     NewPollComponent.prototype.ngOnInit = function () {
         this.myPoll = this.fb.group({
             question: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5)]],
@@ -57,7 +55,10 @@ var NewPollComponent = (function () {
     NewPollComponent.prototype.postPoll = function (model, event) {
         var _this = this;
         this._pollService.postPoll(model)
-            .subscribe(function (poll) { return _this.pollRec = poll; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (poll) {
+            _this.pollRec = poll;
+            _this.router.navigate(['polls']);
+        }, function (error) { return _this.errorMessage = error; });
     };
     ;
     NewPollComponent = __decorate([
@@ -66,7 +67,7 @@ var NewPollComponent = (function () {
             selector: 'new-poll',
             templateUrl: 'app/poll/new-poll.component.html'
         }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder, poll_service_1.PollService])
+        __metadata('design:paramtypes', [forms_1.FormBuilder, poll_service_1.PollService, router_1.Router])
     ], NewPollComponent);
     return NewPollComponent;
 }());
