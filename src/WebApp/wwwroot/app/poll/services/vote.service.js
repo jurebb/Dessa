@@ -33,7 +33,7 @@ var VoteService = (function () {
         this.server = voteHub.server;
         // setConnectionId method called by server
         voteHub.client.setConnectionId = function (id) { return _this.onSetConnectionId(id); };
-        // updateMatch method called by server
+        // updateVote method called by server
         voteHub.client.updateVote = function (polls) { return _this.onUpdateVote(polls); };
         // start the connection
         $.connection.hub.start()

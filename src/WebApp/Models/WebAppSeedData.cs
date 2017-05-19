@@ -48,7 +48,6 @@ namespace WebApp.Models
                     NumOfOptions = 2,
                     Question = "What should I name my cat?",
                     SumVotes = 1,
-                    UrgentFlag = false,
                     UserName = "babanjure",
                     Options = new List<Option>()
                     {
@@ -70,7 +69,6 @@ namespace WebApp.Models
                     NumOfOptions = 3,
                     Question = "Koju marku TV-a odabrati?",
                     SumVotes = 1,
-                    UrgentFlag = false,
                     UserName = "babanjure",
                     Options = new List<Option>()
                     {
@@ -100,7 +98,6 @@ namespace WebApp.Models
                     SecondText = "Zelena",
                     SecondSumVotes = 0,
                     ImageUrl = String.Empty,
-                    UrgentFlag = true,
                     UserName = "babanjure"
                 };
 

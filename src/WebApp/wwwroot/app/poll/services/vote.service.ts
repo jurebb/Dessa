@@ -42,7 +42,7 @@ export class VoteService {
         // setConnectionId method called by server
         voteHub.client.setConnectionId = id => this.onSetConnectionId(id);
 
-        // updateMatch method called by server
+        // updateVote method called by server
         voteHub.client.updateVote = polls => this.onUpdateVote(polls);
 
         // start the connection

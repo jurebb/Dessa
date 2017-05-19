@@ -1,5 +1,5 @@
 {
   "SqlConnectionString": {
-    "String": "Data Source=(localdb)\\MSSQLLocalDB;Database=FWebAppDb1;Trusted_Connection=true;MultipleActiveResultSets=true"
+    "String": "Data Source=(localdb)\\MSSQLLocalDB;Database=FWebAppDb2;Trusted_Connection=true;MultipleActiveResultSets=true"
   }
 }
