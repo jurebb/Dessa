@@ -1,8 +1,13 @@
 {
-	"name": "asp.net",
-	"private": true,
+  "name": "asp.net",
+  "private": true,
   "dependencies": {
     "bulma": "~0.4.0",
-    "font-awesome": "~4.7.0"
-  }
+    "font-awesome": "~4.7.0",
+    "jquery": "2.1.4",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.4",
+    "signalr": "2.2.0"
+  },
+  "ignore": ""
 }

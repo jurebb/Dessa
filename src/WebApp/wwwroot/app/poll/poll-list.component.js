@@ -10,13 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var poll_service_1 = require('./poll.service');
-//import { IPollOptions } from './poll-options';
+var vote_service_1 = require('./services/vote.service');
 var PollListComponent //implements OnInit 
  = (function () {
+    //
     function PollListComponent //implements OnInit 
-        (_pollService) {
+        (_pollService, _voteService) {
         this._pollService = _pollService;
+        this._voteService = _voteService;
         this.pageTitle = 'Poll List';
+        this.updateSubscription = new core_1.EventEmitter();
     }
     PollListComponent //implements OnInit 
     .prototype.voteOption = function (pollId, optionId, event) {
@@ -28,17 +31,45 @@ var PollListComponent //implements OnInit
     ;
     PollListComponent //implements OnInit 
     .prototype.ngOnInit = function () {
+        //let self = this;
         var _this = this;
+        //self._voteService.updateVote
+        //    .subscribe(poll =>
+        //    {
+        //        this.polls[this.polls.findIndex(x => x.id == poll.id)] = poll;
+        //    }
+        //);
+        this._voteService.start(true).subscribe(null, function (error) { return console.log('Error on init: ' + error); });
+        this._voteService.updateVote
+            .subscribe(function (polls) {
+            _this.polls = polls;
+        }, function (error) { return console.log('Error on updateVote method: ' + error); });
         this._pollService.getPolls()
             .subscribe(function (polls) { return _this.polls = polls; }, function (error) { return _this.errorMessage = error; });
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], PollListComponent //implements OnInit 
+    .prototype, "poll", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], PollListComponent //implements OnInit 
+    .prototype, "connection", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], PollListComponent //implements OnInit 
+    .prototype, "updateSubscription", void 0);
     PollListComponent //implements OnInit 
      = __decorate([
         core_1.Component({
             selector: 'poll-list',
             templateUrl: 'app/poll/poll-list.component.html',
+            providers: [vote_service_1.VoteService]
         }), 
-        __metadata('design:paramtypes', [poll_service_1.PollService])
+        __metadata('design:paramtypes', [poll_service_1.PollService, vote_service_1.VoteService])
     ], PollListComponent //implements OnInit 
     );
     return PollListComponent //implements OnInit 

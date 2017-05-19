@@ -15,6 +15,7 @@ var new_option_component_1 = require('./new-option.component');
 var common_1 = require('@angular/common');
 var poll_service_1 = require('./poll.service');
 var router_1 = require('@angular/router');
+var vote_service_1 = require('./services/vote.service');
 var forms_1 = require('@angular/forms'); //as of new-poll
 var forms_2 = require('@angular/forms');
 var PollModule = (function () {
@@ -42,7 +43,8 @@ var PollModule = (function () {
                 new_option_component_1.NewOptionComponent
             ],
             providers: [
-                poll_service_1.PollService
+                poll_service_1.PollService,
+                vote_service_1.VoteService
             ]
         }), 
         __metadata('design:paramtypes', [])

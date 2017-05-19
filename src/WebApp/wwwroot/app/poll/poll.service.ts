@@ -19,7 +19,7 @@ export class PollService {
     getPolls(): Observable<IPoll[]> {
         return this._http.get(this._pollUrl)
             .map((response: Response) => <IPoll[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            //.do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 

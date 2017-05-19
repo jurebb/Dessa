@@ -10,21 +10,7 @@
             </div>
         </div>
 
-        <!--urgent-->
-        <div class="card-content">
-            <label class="label">Is urgent</label>
-            <p class="control">
-                <label class="radio">
-                    <input type="radio" name="question">
-                    Yes
-                </label>
-                <label class="radio">
-                    <input type="radio" name="question">
-                    No
-                </label>
-            </p>
-        </div>
-
+        
         <!--options-->
         <div class="card-content">
             <div formArrayName="options">
@@ -45,11 +31,6 @@
         <div class="card-content">
             <div>
                 <button type="submit" class="button is-success is-medium" [disabled]="!myPoll.valid"  (click)='postPoll(myPoll.value, $event)'>Post</button>
-            </div>
-            <div>
-                <div>myPoll details:-</div>
-                <pre>Is myPoll valid?: <br>{{myPoll.valid | json}}</pre>
-                <pre>form value: <br>{{myPoll.value | json}}</pre>
             </div>
         </div>
 </form>

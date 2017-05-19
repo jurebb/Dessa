@@ -24,7 +24,6 @@ var PollService = (function () {
     PollService.prototype.getPolls = function () {
         return this._http.get(this._pollUrl)
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     PollService.prototype.getPoll = function (id) {

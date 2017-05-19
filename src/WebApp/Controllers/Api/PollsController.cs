@@ -1,23 +1,26 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR.Infrastructure;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using WebApp.Hubs;
 using WebApp.Models;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers.Api
 {
     [Authorize]
-    public class PollsController : Controller
+    public class PollsController : ApiHubController<Broadcaster>        //ApiHubController derives from controller
     {
         private IWebAppRepository _repository;
 
-        public PollsController(IWebAppRepository repository)
+        public PollsController(IWebAppRepository repository, IConnectionManager signalRConnectionManager) : base(signalRConnectionManager)
         {
             _repository = repository;
         }
@@ -48,7 +51,14 @@ namespace WebApp.Controllers.Api
                     var updatedVote = _repository.GetLatestPolls();
                     if (await _repository.SaveChangesAsync())
                     {
-                        return Ok(Mapper.Map<IEnumerable<PollsViewModel>>(updatedVote));
+                        var updatedVoteVM = Mapper.Map<IEnumerable<PollsViewModel>>(updatedVote);
+                        await Clients.All.UpdateVote(updatedVoteVM);
+                        //await Clients.Group(pollId).UpdateVote(updatedVoteVM);
+                        //using (var client = new HttpClient())
+                        //{
+                        //    await client.PutAsJsonAsync<IEnumerable<PollsViewModel>>("http://localhost:63780/api/polls/v/" + pollId, updatedVoteVM);
+                        //}
+                        return Ok(updatedVoteVM);
                     }
                 }
                 else
@@ -60,6 +70,9 @@ namespace WebApp.Controllers.Api
             {
                 
             }
+            
+            
+
             return BadRequest("Error on poll voting");
         }
 

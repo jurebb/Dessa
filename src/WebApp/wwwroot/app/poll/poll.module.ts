@@ -5,6 +5,7 @@ import { NewOptionComponent } from './new-option.component';
 import { CommonModule } from '@angular/common';
 import { PollService } from './poll.service';
 import { RouterModule } from '@angular/router';
+import { VoteService } from './services/vote.service'
 
 import { FormsModule } from '@angular/forms';       //as of new-poll
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         NewOptionComponent
     ],
     providers: [
-        PollService
+        PollService,
+        VoteService
     ]
 })
 export class PollModule { }
