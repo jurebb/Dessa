@@ -1,0 +1,45 @@
+﻿<div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+        <div class="tile">
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-primary">
+                    <p class="title">My Profile</p>
+                    <p class="subtitle">Statistics:</p>
+                    <div class="content" *ngIf="stats">
+                        <ul *ngIf="stats">
+                            <li style="color: whitesmoke"><p class="subtitle">Last Upload: {{stats.lastUpload | date:'dd.MM.yyyy @ HH:mm'}}</p></li>
+                            <li style="color: whitesmoke"><p class="subtitle">Total number of uploaded polls: {{stats.totalPolls}}</p></li>
+                            <li style="color: whitesmoke"><p class="subtitle">Total number of votes: {{stats.totalVotes}}</p></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" *ngFor='let poll of polls'>
+
+    <header class="card-header">
+        <!--TODO REmove ngif-->
+        <p class="card-header-title">
+            {{poll.userName}}
+        </p>
+        <a class="card-header-icon">
+            <span class="icon">
+                <i class="fa fa-angle-down"></i>
+            </span>
+        </a>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            {{poll.question}}
+            <br>
+            <small>{{poll.dateCreated | date:'dd.MM.yyyy @ HH:mm'}}</small>
+        </div>
+    </div>
+    <footer class="card-footer" *ngFor='let option of poll.options'>
+        <a class="card-footer-item" style="cursor: default" >{{option.text}}: &nbsp; <h6 [innerHTML]="option.votes"></h6></a>
+
+    </footer>
+</div>

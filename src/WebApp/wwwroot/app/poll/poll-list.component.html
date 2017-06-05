@@ -12,9 +12,9 @@
     </header>
     <div class="card-content" >
         <div class="content">
-            {{poll.question}} <a>#css</a> <a>#responsive</a>
+            {{poll.question}}
             <br>
-            <small>{{poll.dateCreated}}</small>
+            <small>{{poll.dateCreated | date:'dd.MM.yyyy @ HH:mm'}}</small>
         </div>
     </div>
     <footer class="card-footer" *ngFor='let option of poll.options'>

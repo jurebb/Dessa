@@ -1,0 +1,13 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <div class="tabs is-centered is-toggle">
+        <p style="padding-top: 15px" class="menu-label">Navigation</p>
+        <ul>
+            <li><a [routerLink]="['/polls']">Latest Polls</a></li>
+            <li><a [routerLink]="['/userpolls']">My profile</a></li>
+            <li style="padding-left: 25px"><a [routerLink]="['/newpoll']">Create a New Poll</a></li>
+        </ul>
+    </div>
+}
+
+<router-outlet></router-outlet>

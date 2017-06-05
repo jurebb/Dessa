@@ -2,6 +2,7 @@
 import { PollListComponent } from './poll-list.component';
 import { NewPollComponent } from './new-poll.component';
 import { NewOptionComponent } from './new-option.component';
+import { MyProfileComponent } from './my-profile.component';
 import { CommonModule } from '@angular/common';
 import { PollService } from './poll.service';
 import { RouterModule } from '@angular/router';
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         RouterModule.forChild([
             { path: 'polls', component: PollListComponent },
-            { path: 'newpoll', component: NewPollComponent }
+            { path: 'newpoll', component: NewPollComponent },
+            { path: 'userpolls', component: MyProfileComponent }
         ]),
         FormsModule,
         ReactiveFormsModule
@@ -24,12 +26,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     declarations: [
         PollListComponent,
         NewPollComponent,
-        NewOptionComponent
+        NewOptionComponent,
+        MyProfileComponent
     ],
     exports: [
         PollListComponent,
         NewPollComponent,
-        NewOptionComponent
+        NewOptionComponent,
+        MyProfileComponent
     ],
     providers: [
         PollService,

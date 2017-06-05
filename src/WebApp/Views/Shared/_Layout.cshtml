@@ -29,10 +29,9 @@
                 <div class="container">
                     <div class="nav-left">
                         <a class="nav-item">
-                            <h3>Logo goes here</h3>
+                            <h3>WebApp</h3>
                         </a>
                         <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-                        <a class="nav-item is-tab is-hidden-mobile">My profile</a>
                     </div>
                     <span class="nav-toggle">
                         <span></span>
@@ -42,9 +41,15 @@
                     <div class="nav-right nav-menu">
                         <!--toggle is-active on nav-menu in js-->
                         <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
-                        <a class="nav-item is-tab is-hidden-tablet">My profile</a>
-                        <i class="nav-item"><i class="fa fa-user-circle"></i>&nbspHello, @User.Identity.Name</i>
-                        <a class="nav-item is-tab" asp-controller="Auth" asp-action="Logout">Logout</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <i class="nav-item"><i class="fa fa-user-circle"></i>&nbspHello, @User.Identity.Name</i>
+                            <a class="nav-item is-tab" asp-controller="Auth" asp-action="Logout">Logout</a>
+                        }
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a class="nav-item is-tab" asp-controller="Auth" asp-action="Login">Login</a>
+                        }
                     </div>
                 </div>
             </nav>

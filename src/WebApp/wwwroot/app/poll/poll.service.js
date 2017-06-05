@@ -19,7 +19,9 @@ var PollService = (function () {
     function PollService(_http) {
         this._http = _http;
         this._pollUrl = 'api/polls';
+        this._myPollUrl = 'api/mypolls';
         this._voteUrl = 'api/polls/v/';
+        this._statsUrl = 'api/stats';
     }
     PollService.prototype.getPolls = function () {
         return this._http.get(this._pollUrl)
@@ -29,6 +31,16 @@ var PollService = (function () {
     PollService.prototype.getPoll = function (id) {
         return this.getPolls()
             .map(function (products) { return products.find(function (p) { return p.id === id; }); });
+    };
+    PollService.prototype.getMyPolls = function () {
+        return this._http.get(this._myPollUrl)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    PollService.prototype.getStats = function () {
+        return this._http.get(this._statsUrl)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
     };
     PollService.prototype.voteOption = function (pollId, optionOrder) {
         var body = JSON.stringify({ 'optionOrder': optionOrder });

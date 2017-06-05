@@ -15,7 +15,7 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers.Api
 {
-    [Authorize]
+    
     public class PollsController : ApiHubController<Broadcaster>        //ApiHubController derives from controller
     {
         private IWebAppRepository _repository;
@@ -39,6 +39,37 @@ namespace WebApp.Controllers.Api
             }
         }
 
+        [Authorize]
+        [HttpGet("api/mypolls")]
+        public IActionResult GetUserPolls()
+        {
+            try
+            {
+                var data = _repository.GetUserPolls(User.Identity.Name);
+                return Ok(Mapper.Map<IEnumerable<PollsViewModel>>(data));
+            }
+            catch
+            {
+                return BadRequest("Failed to get data");
+            }
+        }
+
+        [Authorize]
+        [HttpGet("api/stats")]
+        public IActionResult GetUserStats()
+        {
+            try
+            {
+                StatsViewModel data = _repository.GetUserStats(User.Identity.Name);
+                return Ok(data);
+            }
+            catch
+            {
+                return BadRequest("Failed to get data");
+            }
+        }
+
+        [Authorize]
         [HttpPut("api/polls/v/{pollId}")]
         public async Task<IActionResult> VotePoll([FromBody]dynamic data, string pollId)
         {
@@ -76,6 +107,7 @@ namespace WebApp.Controllers.Api
             return BadRequest("Error on poll voting");
         }
 
+        [Authorize]
         [HttpPost("api/polls")]
         public async Task<IActionResult> Post([FromBody]PollsViewModel poll)            //DECS assuming that we will nest array of options inside a poll. presumably doable with seperate jsons if not working.
         {                                                                               //OR with seperate api calls (e.g. api/polls and then api/options/{pollid} for each opt.)   //TODO

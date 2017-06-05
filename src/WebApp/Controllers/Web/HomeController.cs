@@ -10,8 +10,13 @@ namespace WebApp.Controllers.Web
 {
     public class HomeController : Controller
     {
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult appComponent()     //returns angular template for app.module which can cnow contain razor tags!!
         {
             return View();
         }

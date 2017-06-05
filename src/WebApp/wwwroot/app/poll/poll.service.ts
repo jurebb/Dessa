@@ -8,24 +8,38 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { IPoll } from './poll';
+import { IStats } from './stats';
 
 @Injectable()
 export class PollService {
     private _pollUrl = 'api/polls';
+    private _myPollUrl = 'api/mypolls';
     private _voteUrl = 'api/polls/v/';
+    private _statsUrl = 'api/stats';
     
     constructor(private _http: Http) { }
 
     getPolls(): Observable<IPoll[]> {
         return this._http.get(this._pollUrl)
             .map((response: Response) => <IPoll[]>response.json())
-            //.do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
     getPoll(id: number): Observable<IPoll> {
         return this.getPolls()
             .map((products: IPoll[]) => products.find(p => p.id === id));
+    }
+
+    getMyPolls(): Observable<IPoll[]> {
+        return this._http.get(this._myPollUrl)
+            .map((response: Response) => <IPoll[]>response.json())
+            .catch(this.handleError);
+    }
+
+    getStats(): Observable<IStats> {
+        return this._http.get(this._statsUrl)
+            .map((response: Response) => <IStats>response.json())
+            .catch(this.handleError);
     }
 
     voteOption(pollId: string, optionOrder: string): Observable<IPoll[]> {

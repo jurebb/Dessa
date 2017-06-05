@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var poll_list_component_1 = require('./poll-list.component');
 var new_poll_component_1 = require('./new-poll.component');
 var new_option_component_1 = require('./new-option.component');
+var my_profile_component_1 = require('./my-profile.component');
 var common_1 = require('@angular/common');
 var poll_service_1 = require('./poll.service');
 var router_1 = require('@angular/router');
@@ -27,7 +28,8 @@ var PollModule = (function () {
                 common_1.CommonModule,
                 router_1.RouterModule.forChild([
                     { path: 'polls', component: poll_list_component_1.PollListComponent },
-                    { path: 'newpoll', component: new_poll_component_1.NewPollComponent }
+                    { path: 'newpoll', component: new_poll_component_1.NewPollComponent },
+                    { path: 'userpolls', component: my_profile_component_1.MyProfileComponent }
                 ]),
                 forms_1.FormsModule,
                 forms_2.ReactiveFormsModule
@@ -35,12 +37,14 @@ var PollModule = (function () {
             declarations: [
                 poll_list_component_1.PollListComponent,
                 new_poll_component_1.NewPollComponent,
-                new_option_component_1.NewOptionComponent
+                new_option_component_1.NewOptionComponent,
+                my_profile_component_1.MyProfileComponent
             ],
             exports: [
                 poll_list_component_1.PollListComponent,
                 new_poll_component_1.NewPollComponent,
-                new_option_component_1.NewOptionComponent
+                new_option_component_1.NewOptionComponent,
+                my_profile_component_1.MyProfileComponent
             ],
             providers: [
                 poll_service_1.PollService,

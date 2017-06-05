@@ -16,8 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            //template: '<poll-list></poll-list>'
-            template: " <li><a [routerLink]=\"['/polls']\">Polls</a></li>\n                <li><a [routerLink]=\"['/newpoll']\">New Poll</a></li >\n                <router-outlet></router-outlet>"
+            templateUrl: 'Home/appComponent'
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
